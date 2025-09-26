@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PackageOutputPath>./nupkg</PackageOutputPath>
+		<Company>DrMueller</Company>
+		<Product>ReferenceBuddy</Product>
+		<Authors>DrMueller</Authors>
+		<Description>DrMuellers little Roslyn Analyzer Reference Buddy</Description>
+		<PackageProjectUrl>https://github.com/DrMueller/MLRA.ReferenceBuddy</PackageProjectUrl>
+		<PackageIcon>M.png</PackageIcon>
+		<RepositoryUrl>https://github.com/DrMueller/MLRA.ReferenceBuddy</RepositoryUrl>
+		<RepositoryType></RepositoryType>
+		<PackageLicenseUrl></PackageLicenseUrl>
+		<AssemblyVersion Condition="'$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER)</AssemblyVersion>
+		<FileVersion Condition="'$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER)</FileVersion>
+		<Version Condition="'$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER)</Version>
+		<AssemblyVersion Condition="'$(BUILD_BUILDNUMBER)' == '' ">1.0.0.0</AssemblyVersion>
+		<PackageId>ReferenceBuddy</PackageId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="Infrastructure\Assets\M.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="JetBrains.Annotations" Version="2025.2.2" />
+		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.3">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.2.0" />
+	</ItemGroup>
+
+
+</Project>

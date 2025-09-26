@@ -1,0 +1,2 @@
+- SpielerQueryService weg
+- DomainEvents für neue Runden

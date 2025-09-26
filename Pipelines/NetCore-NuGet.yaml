@@ -1,0 +1,35 @@
+name: 2.2$(rev:.r) # build numbering format
+
+variables:
+  BuildConfiguration: 'Release'
+  FolderToPack: 'Application'
+  SolutionName: 'MLRA.ReferenceBuddy.sln' 
+  ApplicationSubPath: 'MLRA.ReferenceBuddy'
+  ReSharperSettingsFileName: 'CISettings_NuGet.DotSettings'
+
+resources:
+  repositories:
+  - repository: ALMStuff
+    type: github
+    name: DrMueller/ALMStuff
+    ref: refs/heads/master
+    endpoint: GitHub-DrMueller
+
+jobs:
+- job: 'BuildAndPublishToNuGet'
+  displayName: 'Build and publish to NuGet'
+  pool:
+    vmImage: windows-2022
+  steps:
+  - checkout: self
+  - checkout: ALMStuff
+  - template: AzureDevOps/BuildTemplates/NetCore/Steps/Initialize_And_Test.yaml@ALMStuff
+    parameters:
+      BuildConfiguration: $(BuildConfiguration)
+      SolutionName: $(SolutionName)
+      ApplicationSubPath: $(ApplicationSubPath)
+      ReSharperSettingsFileName: $(ReSharperSettingsFileName)
+  - template: AzureDevOps/BuildTemplates/NetCore/Steps/Pack_And_Publish_To_NuGet.yaml@ALMStuff
+    parameters:
+      FolderToPack: $(FolderToPack)
+
