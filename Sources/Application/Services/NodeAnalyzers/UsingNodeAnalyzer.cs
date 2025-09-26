@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -57,7 +56,7 @@ namespace Mmu.Mlra.ReferenceBuddy.Services.NodeAnalyzers
 
             if (sourceName == null)
             {
-                IEnumerable<BaseNamespaceDeclarationSyntax> namespaces = usingDirectiveSyntax.Parent?.DescendantNodes()
+                var namespaces = usingDirectiveSyntax.Parent?.DescendantNodes()
                     .OfType<BaseNamespaceDeclarationSyntax>();
 
                 if (namespaces != null)

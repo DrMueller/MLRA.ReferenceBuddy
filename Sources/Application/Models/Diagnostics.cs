@@ -6,8 +6,8 @@ namespace Mmu.Mlra.ReferenceBuddy.Models
 {
     internal static class Diagnostics
     {
-        public const string RefNotAllowedId = "RefBuddy001";
-        public const string RuleFileInvalidId = "RefBuddy002";
+        private const string RefNotAllowedId = "RefBuddy001";
+        private const string RuleFileInvalidId = "RefBuddy002";
 
         public static readonly DiagnosticDescriptor ReferenceNotAllowedDiagnostic = new DiagnosticDescriptor(
             RefNotAllowedId,

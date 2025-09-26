@@ -27,9 +27,14 @@ namespace Mmu.Mlra.ReferenceBuddy.Services
                 return null;
             }
 
-            var rulesFile = rulesFiles.Single();
-            var refRules = rulesFile
-                .GetText()
+            var rulesText = rulesFiles.Single().GetText();
+
+            if (rulesText == null)
+            {
+                return null;
+            }
+
+            var refRules = rulesText
                 .Lines.Select(TryMapping)
                 .SelectSome()
                 .ToList();

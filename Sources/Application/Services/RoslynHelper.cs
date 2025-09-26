@@ -8,15 +8,9 @@ namespace Mmu.Mlra.ReferenceBuddy.Services
     {
         internal static BaseNamespaceDeclarationSyntax FindContainingNamespace(CSharpSyntaxNode syntaxNode)
         {
-            BaseNamespaceDeclarationSyntax result = syntaxNode.FirstAncestorOrSelf<NamespaceDeclarationSyntax>();
-            if (result == null)
-            {
-                result = syntaxNode
-                    .FirstAncestorOrSelf<CompilationUnitSyntax>()?.ChildNodes()
-                    .OfType<FileScopedNamespaceDeclarationSyntax>().FirstOrDefault();
-            }
-
-            return result;
+            return syntaxNode.FirstAncestorOrSelf<NamespaceDeclarationSyntax>() ?? (BaseNamespaceDeclarationSyntax)syntaxNode
+                .FirstAncestorOrSelf<CompilationUnitSyntax>()?.ChildNodes()
+                .OfType<FileScopedNamespaceDeclarationSyntax>().FirstOrDefault();
         }
     }
 }

@@ -3,7 +3,6 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<ImplicitUsings>disable</ImplicitUsings>
-		<Nullable>enable</Nullable>
 		<PackageOutputPath>./nupkg</PackageOutputPath>
 		<Company>DrMueller</Company>
 		<Product>ReferenceBuddy</Product>

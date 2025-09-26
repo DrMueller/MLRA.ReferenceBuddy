@@ -31,7 +31,7 @@ namespace Mmu.Mlra.ReferenceBuddy.Common.Types.Maybes.Implementation
 
         private bool ContentEquals(T other)
         {
-            if (_content is null && other is null)
+            if (_content == null && other == null)
             {
                 return true;
             }

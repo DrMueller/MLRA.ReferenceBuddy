@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
@@ -15,7 +14,7 @@ namespace Mmu.Mlra.ReferenceBuddy.Services.NodeAnalyzers
         {
             var expressionSyntax = (InvocationExpressionSyntax)analysisContext.Node;
 
-            List<IdentifierNameSyntax> idNames = expressionSyntax.ChildNodes().OfType<IdentifierNameSyntax>().ToList();
+            var idNames = expressionSyntax.ChildNodes().OfType<IdentifierNameSyntax>().ToList();
             if (!idNames.Any()
                 || idNames.All(n => n.Identifier.ValueText != "nameof"))
             {
