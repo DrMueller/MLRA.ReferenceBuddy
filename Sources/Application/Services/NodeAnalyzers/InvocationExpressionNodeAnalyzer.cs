@@ -39,9 +39,11 @@ namespace Mmu.Mlra.ReferenceBuddy.Services.NodeAnalyzers
                     case SymbolKind.NamedType:
                         targetName = symbol.ContainingNamespace.ToDisplayString();
                         break;
+
                     case SymbolKind.Namespace when !((symbol as INamespaceSymbol)?.IsGlobalNamespace ?? false):
                         targetName = symbol.ToDisplayString();
                         break;
+
                     default:
                         return;
                 }
