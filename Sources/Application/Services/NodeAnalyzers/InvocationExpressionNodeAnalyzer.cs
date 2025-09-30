@@ -15,6 +15,7 @@ namespace Mmu.Mlra.ReferenceBuddy.Services.NodeAnalyzers
             var expressionSyntax = (InvocationExpressionSyntax)analysisContext.Node;
 
             var idNames = expressionSyntax.ChildNodes().OfType<IdentifierNameSyntax>().ToList();
+
             if (!idNames.Any()
                 || idNames.All(n => n.Identifier.ValueText != "nameof"))
             {
@@ -29,6 +30,7 @@ namespace Mmu.Mlra.ReferenceBuddy.Services.NodeAnalyzers
                 string targetName;
                 var symbol = analysisContext.SemanticModel.GetTypeInfo(expression).Type
                              ?? analysisContext.SemanticModel.GetSymbolInfo(expression).Symbol;
+
                 if (symbol == null)
                 {
                     return;
@@ -38,10 +40,12 @@ namespace Mmu.Mlra.ReferenceBuddy.Services.NodeAnalyzers
                 {
                     case SymbolKind.NamedType:
                         targetName = symbol.ContainingNamespace.ToDisplayString();
+
                         break;
 
                     case SymbolKind.Namespace when !((symbol as INamespaceSymbol)?.IsGlobalNamespace ?? false):
                         targetName = symbol.ToDisplayString();
+
                         break;
 
                     default:
@@ -49,6 +53,7 @@ namespace Mmu.Mlra.ReferenceBuddy.Services.NodeAnalyzers
                 }
 
                 var containingNamespace = RoslynHelper.FindContainingNamespace(expressionSyntax);
+
                 if (containingNamespace == null)
                 {
                     return;
