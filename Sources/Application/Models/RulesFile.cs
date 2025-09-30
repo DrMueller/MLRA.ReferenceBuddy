@@ -36,16 +36,16 @@ namespace Mmu.Mlra.ReferenceBuddy.Models
 
         private bool CheckIsAllowedReference(string sourceName, string targetName)
         {
-            const string global = "global::";
+            const string Global = "global::";
 
-            if (sourceName.StartsWith(global))
+            if (sourceName.StartsWith(Global))
             {
-                sourceName = sourceName.Substring(global.Length);
+                sourceName = sourceName.Substring(Global.Length);
             }
 
-            if (targetName.StartsWith(global))
+            if (targetName.StartsWith(Global))
             {
-                targetName = targetName.Substring(global.Length);
+                targetName = targetName.Substring(Global.Length);
             }
 
             if (sourceName == targetName)

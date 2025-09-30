@@ -52,6 +52,7 @@ namespace Mmu.Mlra.ReferenceBuddy.Services
             }
 
             var parts = lineText.Split(new[] { RuleSeparator }, StringSplitOptions.RemoveEmptyEntries);
+
             if (parts.Length != 2)
             {
                 return None.Value;

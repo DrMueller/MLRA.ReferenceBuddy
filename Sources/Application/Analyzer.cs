@@ -20,6 +20,7 @@ namespace Mmu.Mlra.ReferenceBuddy
             context.RegisterCompilationStartAction(compilationContext =>
             {
                 var rulesFile = RulesFileFactory.TryCreating(compilationContext.Options);
+
                 if (rulesFile == null)
                 {
                     compilationContext.RegisterCompilationEndAction(compilationEndContext =>
