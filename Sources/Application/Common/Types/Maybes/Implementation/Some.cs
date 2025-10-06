@@ -36,12 +36,7 @@ namespace Mmu.Mlra.ReferenceBuddy.Common.Types.Maybes.Implementation
                 return true;
             }
 
-            if (_content != null && _content.Equals(other))
-            {
-                return true;
-            }
-
-            return false;
+            return _content != null && _content.Equals(other);
         }
 
         private bool Equals(Some<T> other)

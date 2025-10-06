@@ -1,0 +1,32 @@
+parameters:
+    FolderToPack: ''
+    ToNugetOrg: false
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: Pack
+  inputs:
+    command: pack
+
+    packagesToPack: '**/${{parameters.FolderToPack}}/*.csproj'
+    packDirectory: '$(Build.ArtifactStagingDirectory)/output'
+    versioningScheme: byBuildNumber
+
+- ${{ if eq(parameters.ToNugetOrg, true) }}:
+  - task: DotNetCoreCLI@2
+    displayName: Push Nuget Package
+    inputs:
+      command: custom
+      custom: nuget
+      arguments: >
+        push $(Build.ArtifactStagingDirectory)\output\*.nupkg
+        -s https://api.nuget.org/v3/index.json
+        -k $(NugetApiKey)
+
+- ${{ if eq(parameters.ToNugetOrg, false) }}:
+  - task: DotNetCoreCLI@2
+    displayName: 'Push to NuGet'
+    inputs:
+      command: push
+
+      publishVstsFeed: '3c2d9c9a-d8f7-42f4-b7a3-dddf4064110a'

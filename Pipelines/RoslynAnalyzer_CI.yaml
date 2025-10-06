@@ -7,29 +7,19 @@ variables:
   ApplicationSubPath: 'MLRA.ReferenceBuddy'
   ReSharperSettingsFileName: 'CISettings_NuGet.DotSettings'
 
-resources:
-  repositories:
-  - repository: ALMStuff
-    type: github
-    name: DrMueller/ALMStuff
-    ref: refs/heads/master
-    endpoint: GitHub-DrMueller
-
 jobs:
 - job: 'BuildAndPublishToNuGet'
   displayName: 'Build and publish to NuGet'
   pool:
     vmImage: windows-2022
   steps:
-  - checkout: self
-  - checkout: ALMStuff
-  - template: AzureDevOps/BuildTemplates/NetCore/Steps/Initialize_And_Test.yaml@ALMStuff
+  - template: Steps/Initialize_And_Test.yaml
     parameters:
       BuildConfiguration: $(BuildConfiguration)
       SolutionName: $(SolutionName)
       ApplicationSubPath: $(ApplicationSubPath)
       ReSharperSettingsFileName: $(ReSharperSettingsFileName)
-  - template: AzureDevOps/BuildTemplates/NetCore/Steps/Pack_And_Publish_To_NuGet.yaml@ALMStuff
+  - template: Steps/Pack_And_Publish_To_NuGet.yaml
     parameters:
       FolderToPack: $(FolderToPack)
       ToNugetOrg: true

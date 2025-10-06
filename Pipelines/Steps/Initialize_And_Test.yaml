@@ -1,0 +1,45 @@
+parameters:
+  BuildConfiguration: ''
+  ApplicationSubPath: ''
+  SolutionName: ''
+  ReSharperSettingsFileName: ''
+  ScanVulnerabilities: true
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: Restore
+  inputs:
+    command: restore
+    projects: '${{ parameters.ApplicationSubPath }}/**/*.sln'
+    vstsFeed: '3c2d9c9a-d8f7-42f4-b7a3-dddf4064110a'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build with Warnings as Errors'
+  inputs:
+    projects: '${{ parameters.ApplicationSubPath }}/**/Mmu.Mlra.ReferenceBuddy.csproj'
+    arguments: '/p:TreatWarningsAsErrors="true" --configuration ${{ parameters.BuildConfiguration }}'
+
+- ${{ if eq(parameters.ScanVulnerabilities, true) }}:
+  - task: DrMueller2.NuGetVulnerabilityScan.NugetVulnerabilityScanTask.NugetVulnerabilityScanTask@1
+    displayName: NuGet Vulnerability Scan
+    inputs:
+      projectPath: "**/*.sln"
+
+- task: petersendev.dotnet-global-tool-installer.DotnetGlobalToolInstaller.DotnetGlobalToolInstaller@0
+  displayName: '.NET Core Global Tool'
+  inputs:
+    name: JetBrains.ReSharper.GlobalTools
+    versionSpec: '2025.1.2'
+
+- task: DrMueller2.ReSharperRunner.ReSharperRunnerTask.ReSharperRunnerTask@2
+  displayName: 'Run ReSharper analysis'
+  inputs:
+    solutionPath: ${{ parameters.ApplicationSubPath }}/${{ parameters.SolutionName }}
+    thresholdForFailure: warning
+    additionalArguments: '/disable-settings-layers:SolutionPersonal --no-build'
+- task: DotNetCoreCLI@2
+  displayName: Run Tests
+  inputs:
+    command: test
+    projects: '${{ parameters.ApplicationSubPath }}/**/TRA.Sln'
+    arguments: '--configuration ${{ parameters.BuildConfiguration }}'

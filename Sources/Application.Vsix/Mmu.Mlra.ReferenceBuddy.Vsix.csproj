@@ -4,8 +4,8 @@
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
-    <RootNamespace>MLRA.ReferenceBuddy.Vsix</RootNamespace>
-    <AssemblyName>MLRA.ReferenceBuddy.Vsix</AssemblyName>
+    <RootNamespace>Mmu.Mlra.ReferenceBuddy.Vsix</RootNamespace>
+    <AssemblyName>Mmu.Mlra.ReferenceBuddy.Vsix</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup>

@@ -12,12 +12,7 @@ namespace Mmu.Mlra.ReferenceBuddy.Common.Types.Maybes
                 return true;
             }
 
-            if (a != null && b != null && a.Equals(b))
-            {
-                return true;
-            }
-
-            return false;
+            return a != null && b != null && a.Equals(b);
         }
 
         public static bool operator ==(Maybe<T> a, T b)
