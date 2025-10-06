@@ -14,7 +14,7 @@ namespace Mmu.Mlra.ReferenceBuddy.Models
             "Reference is not allowed",
             "A reference between '{0}' and '{1}' is not allowed",
             "ReferenceBuddy",
-            DiagnosticSeverity.Error,
+            DiagnosticSeverity.Warning,
             true,
             "Reference is not allowed.");
 
@@ -27,7 +27,7 @@ namespace Mmu.Mlra.ReferenceBuddy.Models
             "No or invalid rules files found",
             "Ensure exactly one rule file exists per project",
             "ReferenceBuddy",
-            DiagnosticSeverity.Error,
+            DiagnosticSeverity.Warning,
             true,
             $"There must be exactly one file named {RulesFileFactory.FileName}.");
     }

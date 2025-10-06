@@ -25,7 +25,7 @@ namespace Mmu.Mlra.ReferenceBuddy
                 {
                     compilationContext.RegisterCompilationEndAction(compilationEndContext =>
                     {
-                        var diagnostic = Diagnostic.Create(Diagnostics.NoRulesFileFoundDiagnostic, null);
+                        var diagnostic = Diagnostic.Create(Diagnostics.NoRulesFileFoundDiagnostic, Location.None);
                         compilationEndContext.ReportDiagnostic(diagnostic);
                     });
 

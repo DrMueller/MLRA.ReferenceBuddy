@@ -18,6 +18,7 @@ namespace Mmu.Mlra.ReferenceBuddy.Services.NodeAnalyzers
                 return;
             }
 
+            // ReSharper disable once PossibleNullReferenceException
             var targetName = usingDirectiveSyntax.Name.ToFullString().Trim();
             var stripClass = false;
             var isGlobal = usingDirectiveSyntax.GlobalKeyword.Text == "global";
