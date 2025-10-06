@@ -1,11 +1,8 @@
 name: 1.0$(rev:.r) # build numbering format
 
 variables:
-  BuildConfiguration: 'Release'
   FolderToPack: 'Application'
-  SolutionName: 'MLRA.ReferenceBuddy.sln' 
-  ApplicationSubPath: 'MLRA.ReferenceBuddy'
-  ReSharperSettingsFileName: 'CISettings_NuGet.DotSettings'
+  SolutionName: 'MLRA.ReferenceBuddy.sln'
 
 jobs:
 - job: 'BuildAndPublishToNuGet'
@@ -15,10 +12,7 @@ jobs:
   steps:
   - template: Steps/Initialize_And_Test.yaml
     parameters:
-      BuildConfiguration: $(BuildConfiguration)
       SolutionName: $(SolutionName)
-      ApplicationSubPath: $(ApplicationSubPath)
-      ReSharperSettingsFileName: $(ReSharperSettingsFileName)
   - template: Steps/Pack_And_Publish_To_NuGet.yaml
     parameters:
       FolderToPack: $(FolderToPack)
