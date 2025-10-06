@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
 	<ImplicitUsings>disable</ImplicitUsings>
 	<PackageOutputPath>./nupkg</PackageOutputPath>
+	<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
 	<Company>DrMueller</Company>
 	<Product>ReferenceBuddy</Product>
 	<Authors>DrMueller</Authors>
