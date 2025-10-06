@@ -6,19 +6,19 @@ steps:
   displayName: Restore
   inputs:
     command: restore
-    projects: '/**/*.sln'
+    projects: '$(Build.SourcesDirectory)/**/*.sln'
     vstsFeed: '3c2d9c9a-d8f7-42f4-b7a3-dddf4064110a'
 
 - task: DotNetCoreCLI@2
   displayName: 'Build with Warnings as Errors'
   inputs:
-    projects: '${{ parameters.ApplicationSubPath }}/**/Mmu.Mlra.ReferenceBuddy.csproj'
+    projects: '$(Build.SourcesDirectory)/**/Mmu.Mlra.ReferenceBuddy.csproj'
     arguments: '/p:TreatWarningsAsErrors="true" --configuration Release'
 
 - task: DrMueller2.NuGetVulnerabilityScan.NugetVulnerabilityScanTask.NugetVulnerabilityScanTask@1
   displayName: NuGet Vulnerability Scan
   inputs:
-    projectPath: "**/*.sln"
+    projectPath: "$(Build.SourcesDirectory)/**/*.sln"
 
 - task: petersendev.dotnet-global-tool-installer.DotnetGlobalToolInstaller.DotnetGlobalToolInstaller@0
   displayName: '.NET Core Global Tool'
