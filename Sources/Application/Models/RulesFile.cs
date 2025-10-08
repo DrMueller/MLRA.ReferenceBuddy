@@ -5,7 +5,7 @@ using Microsoft.CodeAnalysis.Diagnostics;
 
 namespace Mmu.Mlra.ReferenceBuddy.Models
 {
-    internal class RulesFile
+    public class RulesFile
     {
         private readonly IReadOnlyCollection<ReferenceRule> _rules;
 

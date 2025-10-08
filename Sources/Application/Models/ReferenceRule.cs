@@ -2,7 +2,7 @@
 
 namespace Mmu.Mlra.ReferenceBuddy.Models
 {
-    internal class ReferenceRule
+    public class ReferenceRule
     {
         private readonly bool _invert;
         private readonly Regex _sourceRegex;

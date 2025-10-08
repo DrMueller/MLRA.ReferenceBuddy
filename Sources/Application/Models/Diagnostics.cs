@@ -4,12 +4,12 @@ using Mmu.Mlra.ReferenceBuddy.Services;
 
 namespace Mmu.Mlra.ReferenceBuddy.Models
 {
-    internal static class Diagnostics
+    public static class Diagnostics
     {
-        private const string RefNotAllowedId = "RefBuddy001";
+        public const string RefNotAllowedId = "RefBuddy001";
         private const string RuleFileInvalidId = "RefBuddy002";
 
-        public static readonly DiagnosticDescriptor ReferenceNotAllowedDiagnostic = new DiagnosticDescriptor(
+        public static DiagnosticDescriptor ReferenceNotAllowedDiagnostic { get; } = new DiagnosticDescriptor(
             RefNotAllowedId,
             "Reference is not allowed",
             "A reference between '{0}' and '{1}' is not allowed",

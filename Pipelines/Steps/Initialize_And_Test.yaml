@@ -36,5 +36,5 @@ steps:
   displayName: Run Tests
   inputs:
     command: test
-    projects: '${{ parameters.ApplicationSubPath }}/**/TRA.Sln'
+    projects: '$(Build.SourcesDirectory)/**/*.sln'
     arguments: '--configuration Release'

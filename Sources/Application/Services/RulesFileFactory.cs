@@ -9,7 +9,7 @@ using Mmu.Mlra.ReferenceBuddy.Models;
 
 namespace Mmu.Mlra.ReferenceBuddy.Services
 {
-    internal static class RulesFileFactory
+    public static class RulesFileFactory
     {
         public const string FileName = ".refbuddyrules";
         private const string RuleSeparator = " ";
