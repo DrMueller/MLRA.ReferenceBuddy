@@ -2,5 +2,4 @@
 
 Rule ID | Category | Severity | Notes
 --------|----------|----------|-------
-RefBuddy001 | Design | Warning | Invalid reference
-RefBuddy002 | Design | Warning | Rule file invalid
+ROL001 | Usage | Warning | Request is only used in tests and/or handlers
