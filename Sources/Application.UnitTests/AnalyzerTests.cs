@@ -129,7 +129,7 @@ namespace Sample
         private static async Task<ImmutableArray<Diagnostic>> AnalyzeAsync(params string[] sources)
         {
             var syntaxTrees = sources
-                .Select(src => CSharpSyntaxTree.ParseText(src, new CSharpParseOptions(LanguageVersion.CSharp12)))
+                .Select(src => CSharpSyntaxTree.ParseText(src, new CSharpParseOptions(LanguageVersion.Latest)))
                 .ToArray();
 
             var compilation = CSharpCompilation.Create(
