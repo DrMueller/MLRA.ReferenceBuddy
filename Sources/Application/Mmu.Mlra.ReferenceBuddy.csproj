@@ -6,7 +6,7 @@
 	<PackageOutputPath>./nupkg</PackageOutputPath>
 	<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
 	<Company>DrMueller</Company>
-	<Product>ReferenceBuddy</Product>
+	<Product>MLRA.ReferenceBuddy</Product>
 	<Authors>DrMueller</Authors>
 	<Description>DrMuellers little Roslyn Analyzer Reference Buddy</Description>
 	<PackageProjectUrl>https://github.com/DrMueller/MLRA.ReferenceBuddy</PackageProjectUrl>
@@ -18,7 +18,7 @@
 	<FileVersion Condition="'$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER)</FileVersion>
 	<Version Condition="'$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER)</Version>
 	<AssemblyVersion Condition="'$(BUILD_BUILDNUMBER)' == '' ">1.0.0.0</AssemblyVersion>
-	<PackageId>ReferenceBuddy</PackageId>
+	<PackageId>MLRA.ReferenceBuddy</PackageId>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -26,12 +26,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	<PackageReference Include="JetBrains.Annotations" Version="2025.2.2" />
-	  <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="5.0.0-1.25277.114">
+	  <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="5.6.0">
 	    <PrivateAssets>all</PrivateAssets>
 	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	  </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.6.0" />
   </ItemGroup>
 
   <ItemGroup>
